@@ -3,8 +3,8 @@
 <?php
 session_start();
 
-$username = "abadee";
-$password = "123456";
+$username = "qukandy";
+$password = "000000";
 
 $errir = "";
 
