@@ -4,30 +4,9 @@
 $_SESSION['failed'] = 0;
 session_start();
 
-$username = "qukandy";
-$password = "000000";
-/*
-$_SESSION['username'] = 'qukandy';
-$_SESSION['loggedIn'] = true;
-$_SESSION['password'] = '123456';
+$username = array ("qukandy", "abadee", "aqukandy");
+$password = array ("000000", "123456", "111111");
 
-if (isset($_POST['loggrdIn'])) {
-    $username = array('username1', 'username2', 'username3');
-    $password = array('password1', 'password2', 'password3');
-    if (in_array($_POST['username'], $username)) {
-        $key = array_search($_POST['username'], $username);
-        if ($password[$key] == $_POST['password']) {
-            $_SESSTION['access'] = 1;
-            header("Location: success.php");
-            echo "Welcome back " . $_POST['username'];
-        } else {
-            echo "Password Incorrect.";
-        }
-    }
-} else {
-    echo "Login from";
-}
- */
  if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
   header("Location: success.php");
   } 
