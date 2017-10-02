@@ -30,8 +30,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     </head>
 
     
-        <!-- output error massage if any -->
-        <?php echo $error; ?>
+        
 
         <!-- from for login -->
         <form method ="post" action="index.php">
