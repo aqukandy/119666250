@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 
 <?php
+$_SESSION['failed'] = 0;
 session_start();
 
 $username = "qukandy";
 $password = "000000";
-$_SESSION['failed'] = 0;
+
 
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
@@ -15,6 +16,8 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
 if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($_POST['username'] == $username && $_POST['password'] == $password) {
         $_SESSION['loggedIn'] = true;
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['password'] = $_POST['password'];
         header('Location: success.php');
     } else {
        // $_SESSION['loggedIn'] = false;
