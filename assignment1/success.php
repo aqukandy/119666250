@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-echo "Logged In! " . $_SESSION['username'] . " password is " . $_SESSION['password'] . " date " . date("Y/M/D") . " time " . date("H/I/S");
+echo "WELCOME! " . $_SESSION['username'] . " Your Password is " . $_SESSION['password'] . " The Date is " . date("Y/m/d") . " and The Time is " . date("H/i/s");
 
 ?>
 <form method ="post" action="logout.php">
