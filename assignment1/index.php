@@ -3,10 +3,14 @@
 <?php
 $_SESSION['failed'] = 0;
 session_start();
+
+$username = "qukandy";
+$password = "000000";
+/*
 $_SESSION['username'] = 'qukandy';
 $_SESSION['loggedIn'] = true;
 $_SESSION['password'] = '123456';
-/*
+
 if (isset($_POST['loggrdIn'])) {
     $username = array('username1', 'username2', 'username3');
     $password = array('password1', 'password2', 'password3');
@@ -25,7 +29,6 @@ if (isset($_POST['loggrdIn'])) {
 }
  */
  if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-     
   header("Location: success.php");
   } 
 
