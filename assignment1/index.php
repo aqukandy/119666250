@@ -5,11 +5,10 @@ session_start();
 
 $username = "qukandy";
 $password = "000000";
+$_SESSION['failed'] = 0;
 
-$errir = "";
 
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-    $error = "success";
     header("Location: success.php");
 }
 
@@ -18,8 +17,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['loggedIn'] = true;
         header('Location: success.php');
     } else {
-        $_SESSION['loggedIn'] = false;
-        $error = "Invalid username and password!";
+       // $_SESSION['loggedIn'] = false;
+        $_SESSION['failed'] = $_SESSION['failed'] + 1; 
+        echo "Invalid username and password!". $_SESSION['failed'];
     }
 }
 ?>
@@ -28,9 +28,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <head>
         <title>Login page</title>
     </head>
-
-    
-        
 
         <!-- from for login -->
         <form method ="post" action="index.php">
