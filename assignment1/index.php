@@ -7,10 +7,6 @@ session_start();
 $username = array ("qukandy", "abadee", "aqukandy");
 $password = array ("000000", "123456", "111111");
 
- /*if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-  header("Location: success.php");
-  }*/ 
-
 if (isset($_POST['username']) && isset($_POST['password'])) {
 for ($i = 0; $i < 2; $i++) {
   if ($_POST['username'] == $username[$i] && $_POST['password'] == $password[$i]) {
