@@ -39,3 +39,7 @@ for ($i = 0; $i < 2; $i++) {
 <form method ="post" action="attempts counts.php">
     <input type="submit" value="attempts numbers">
 </form>
+
+<form method ="post" action="create account.php">
+    <input type="submit" value="create account">
+</form>
