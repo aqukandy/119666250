@@ -7,7 +7,7 @@ $dbname = "cosc";
 
 $email = $_POST['Email'];
 $user = $_POST['Username'];
-$pass1 = $_POST['Password'];
+$pass = $_POST['Password'];
 
 
 
@@ -21,7 +21,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "INSERT INTO `users`(`Email`, `Username`, `Password`)
-			VALUES ('$email','$user','$pass1')";
+			VALUES ('$email','$user','$pass')";
 
 
 
