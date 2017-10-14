@@ -5,7 +5,7 @@
             <url>index.php</url>
             <bookmark id="1">
                 <name/>
-                <line>13</line>
+                <line>35</line>
                 <key/>
             </bookmark>
         </file>
@@ -15,6 +15,8 @@
             <file>file:/C:/xampp/htdocs/assignment1/logout.php</file>
             <file>file:/C:/xampp/htdocs/assignment1/index.php</file>
             <file>file:/C:/xampp/htdocs/assignment1/success.php</file>
+            <file>file:/C:/xampp/htdocs/assignment1/addToTable.php</file>
+            <file>file:/C:/xampp/htdocs/assignment1/create%20account.php</file>
         </group>
     </open-files>
 </project-private>
