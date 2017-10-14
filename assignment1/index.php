@@ -1,25 +1,37 @@
 <!DOCTYPE HTML>
 
 <?php
-$_SESSION['failed'] = 0;
 session_start();
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "cosc";
 
-$username = array ("qukandy", "abadee", "aqukandy");
-$password = array ("000000", "123456", "111111");
+if (isset($_SESSION['fail']) == true) {
+    if (isset($_POST['username']) == true && isset($_POST['password']) == true) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-for ($i = 0; $i < 2; $i++) {
-  if ($_POST['username'] == $username[$i] && $_POST['password'] == $password[$i]) {
-  $_SESSION['loggedIn'] = true;
-  $_SESSION['username'] = $_POST['username'];
-  $_SESSION['password'] = $_POST['password'];
-  header('Location: success.php');
-  } 
- }
-  // $_SESSION['loggedIn'] = false;
-  $_SESSION['failed'] = $_SESSION['failed'] + 1;
-  echo "Invalid username and password!";
-  
+        $conn = mysqli_connect($servername, $dbusername, $dbpassword) or die("Could not connect to database");
+        mysqli_select_db($conn, $dbname);
+
+        $sql = "SELECT * FROM users WHERE Username='$username'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $hash_pwd = $row['Password'];
+
+        if (!password_verify($password, $hash_pwd)) {
+            $_SESSION['fail'] = $_SESSION['fail'] + 1;
+            echo "Wrong Username or Password";
+        } else {
+            $sq = "SELECT * FROM users WHERE Username = '$username' AND Password = '$hash_pwd'";
+            $result = $conn->query($sq);
+
+            header("Location: success.php");
+        }
+    }
+} else {
+    $_SESSION['fail'] = 0;
 }
 ?>
 
@@ -31,7 +43,7 @@ for ($i = 0; $i < 2; $i++) {
 <form method ="post" action="index.php">
     <label for ="Username">Username:</label><br/>
     <input type="text" name="username" id="username"><br/>
-    <label for ="password">password:</label><br/>
+    <label for ="password">Password:</label><br/>
     <input type="password" name="password" id="password"><br/>
     <input type="submit" value="Log In">
 </form>
