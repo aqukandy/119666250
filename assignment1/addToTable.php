@@ -1,34 +1,30 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cosc";
+	$servername = "localhost";
+	$dbusername = "root";
+	$dbpassword = "";
+	$dbname = "cosc";
+	
+	$username = $_POST['Username'];
+	$password = $_POST['Password'];
+	$email = $_POST['Email'];
+	
+	$hashPass = password_hash($password, PASSWORD_DEFAULT, ['cost' => 15]);
+	try{
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
 
-$email = $_POST['Email'];
-$user = $_POST['Username'];
-$pass = $_POST['Password'];
-
-
-
-
-
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-
-    // set the PDO error mode to exception
+	// set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $sql = "INSERT INTO `users`(`Email`, `Username`, `Password`)
-			VALUES ('$email','$user','$pass')";
-
-
-
+	
+    $sql = "INSERT INTO `users`(`Username`, `Password`, `Email`)
+			VALUES ('$username','$hashPass','$email')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "New record created successfully";
-} catch (PDOException $e) {
+	header("Location: index.php");
+    }
+catch(PDOException $e)
+    {
     echo $sql . "<br>" . $e->getMessage();
-}
+    }
+
 ?>
