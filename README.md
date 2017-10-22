@@ -1,2 +1,2 @@
 # assignment
-https://github.com/aqukandy/assignment
+https://github.com/aqukandy/cosc
