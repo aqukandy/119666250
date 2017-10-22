@@ -12,12 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/assignment1/logout.php</file>
-            <file>file:/C:/xampp/htdocs/assignment1/index.php</file>
-            <file>file:/C:/xampp/htdocs/assignment1/success.php</file>
-            <file>file:/C:/xampp/htdocs/assignment1/addToTable.php</file>
-            <file>file:/C:/xampp/htdocs/assignment1/create%20account.php</file>
-            <file>file:/C:/xampp/htdocs/assignment1/attempts%20counts.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/index.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/addToTable.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/attempts%20counts.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/success.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/logout.php</file>
         </group>
     </open-files>
 </project-private>
