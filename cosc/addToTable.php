@@ -4,7 +4,6 @@ session_start();
 	$dbusername = "root";
 	$dbpassword = "";
 	$dbname = "cosc";
-	
 	$username = $_POST['Username'];
 	$password = $_POST['Password'];
 	$email = $_POST['Email'];
