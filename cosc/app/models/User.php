@@ -18,7 +18,7 @@ class User {
 		 
 		$db = db_connect();
         $statement = $db->prepare("select * from users
-                                WHERE name = :name;
+                                WHERE username = :username;
                 ");
         $statement->bindValue(':name', $this->username);
         $statement->execute();
@@ -26,17 +26,17 @@ class User {
 		
 		if ($rows) {
 			$this->auth = true;
-			$_SESSION['name'] = $rows[0]['name'];
-			$_SESSION['age'] = $rows[0]['age'];
+			$_SESSION['username'] = $rows[0]['username'];
+			$_SESSION['password'] = $rows[0]['password'];
 		}
     }
 	
 	public function register ($username, $password) {
 		$db = db_connect();
-        $statement = $db->prepare("INSERT INTO users (name)"
-                . " VALUES (:name); ");
+        $statement = $db->prepare("INSERT INTO users (username)"
+                . " VALUES (:username); ");
 
-        $statement->bindValue(':name', $username);
+        $statement->bindValue(':username', $username);
         $statement->execute();
 
 	}

@@ -5,7 +5,7 @@ class Home extends Controller {
     public function index($name = '') {		
         $user = $this->model('User');
 		
-		if (strtolower($_SESSION['name']) == 'mike') {
+		if (strtolower($_SESSION['username']) == 'abadee') {
 			$message = 'You are awesome';
 		} else {
 			$message = 'You suck';
