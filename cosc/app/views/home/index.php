@@ -1,18 +1,17 @@
-<?php require_once '../app/views/templates/header.php' ?>
-<div class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Hey, <?=$_SESSION['name']?></h1>
-                <p class="lead"> <?= date("F jS, Y"); ?></p>
-            </div>
-        </div>
-    </div>
+<?php
+echo "WELCOME TO MY WEBSITE! " . $_SESSION['username']. $_SESSION['report'];
+echo "Today is: " . date("F jS, Y") . " and The Time is " . date("h:i:sa");
 
-    <div class="row">
-        <div class="col-lg-12">
-            <p> <?=$data['message']?> </p>
-        </div>
-    </div>
+if (!empty($_SESSION['authenticated'])) {
+    header("Location: /logout");
+} else {
+    $_SESSION['authenticated'] = true;
+}
+?>
 
-    <?php require_once '../app/views/templates/footer.php' ?>
+<br/>
+<a href="/logout"> logout! </a>
+
+<?php require_once '../app/views/templates/footer.php' ?>
+
+
