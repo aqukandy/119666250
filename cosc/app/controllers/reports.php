@@ -1,7 +1,8 @@
 <?php
 
 class Reports extends Controller {
-    public function students() {
-		 $this->view('reports/students');    
+    public function attempts() {
+        $user = $this->model('User');
+        $this->view('reports/students');    
     }
 }
