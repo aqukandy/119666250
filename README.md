@@ -1,2 +1,2 @@
-# assignment
+# cosc
 https://github.com/aqukandy/cosc
