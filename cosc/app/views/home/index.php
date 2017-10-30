@@ -1,6 +1,7 @@
+
 <?php
 echo "WELCOME TO MY WEBSITE! " . $_SESSION['username']. $_SESSION['report'];
-echo "Today is: " . date("F jS, Y") . " and The Time is " . date("h:i:sa");
+echo "  Today is: " . date("F jS, Y") . " and The Time is " . date("h:i:sa");
 
 if (!empty($_SESSION['authenticated'])) {
     header("Location: /logout");
