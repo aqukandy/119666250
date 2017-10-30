@@ -9,7 +9,7 @@ if (isset($_SESSION['auth']) != 1) {
     <head>
         <link href= "/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link rel="icon" href="/favicon.png">
-        <title>COSC 4806</title>
+        <title>cosc</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@ if (isset($_SESSION['auth']) != 1) {
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">COSC</a>
+                    <a class="navbar-brand" href="/home">cosc</a>
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>

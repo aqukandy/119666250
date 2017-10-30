@@ -25,8 +25,7 @@ class Login extends Controller {
         header('Location: /home');
     }
 	
-    public function register () {
-		
+    public function register () {	
         $user = $this->model('User');
 	
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
