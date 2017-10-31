@@ -13,11 +13,11 @@
         $statement->bindValue(':attempt', $attempts);
         $statement->execute();
     } else {
-       $statement1 = $db->prepare("INSERT INTO log (Username, Attempt)"
+       $statement_ = $db->prepare("INSERT INTO log (Username, Attempt)"
                 . "VALUES (:username, :attempt); ");
-       $statement1->bindValue(':username',$_SESSION['username']);
-       $statement1->bindValue(':attempt', $attempts);
-       $statement1->execute();
+       $statement_->bindValue(':username',$_SESSION['username']);
+       $statement_->bindValue(':attempt', $attempts);
+       $statement_->execute();
     }
 			
 session_destroy();

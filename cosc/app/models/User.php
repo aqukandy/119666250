@@ -36,19 +36,20 @@ class User {
         $statement->bindValue(':attempt', 0);
         $statement->execute();
 	$this->auth = false;
-    } 
+    }
+    
     if ($rows){	
         $attempts = $attempt_number + 1;
-        $statement = $db->prepare("UPDATE wrong logging SET Attempt = :attempt WHERE Username = :user");
+        $statement = $db->prepare("UPDATE wronglog SET Attempt = :attempt WHERE Username = :user");
 	$statement->bindValue(':user', $this->username);
         $statement->bindValue(':attempt', $attempts);
         $statement->execute();
     } else {
-        $statement1 = $db->prepare("INSERT INTO wronglog (Username, Attempt)"
+        $statement_ = $db->prepare("INSERT INTO wronglog (Username, Attempt)"
 		. "VALUES (:username, :attempt); ");
-	$statement1->bindValue(':username', $this->username);
-	$statement1->bindValue(':attempt', $attempts);
-	$statement1->execute();
+	$statement_->bindValue(':username', $this->username);
+	$statement_->bindValue(':attempt', $attempts);
+	$statement_->execute();
             }
         $this->auth = false;
     } else {
@@ -65,9 +66,9 @@ class User {
 	$db = db_connect();
 	$statement = $db->prepare("INSERT INTO users (Username, Password, Email)"
 		. "VALUES (:username, :password, :email ); ");
-	$statement->bindValue(':username',	$username);
-	$statement->bindValue(':password',	$hashPass);
-	$statement->bindValue(':email', 	$email);
+	$statement->bindValue(':username', $username);
+	$statement->bindValue(':password', $hashPass);
+	$statement->bindValue(':email', $email);
         $statement->execute();
 	$_SESSION['auth'] = true;
     } else {
