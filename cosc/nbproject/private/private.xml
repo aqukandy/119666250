@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/cosc/app/views/home/index.php</file>
-            <file>file:/C:/xampp/htdocs/cosc/app/views/home/register.php</file>
-            <file>file:/C:/xampp/htdocs/cosc/app/views/home/login.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/app/models/User.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/app/controllers/home.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/app/controllers/reports.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/app/controllers/logout.php</file>
+            <file>file:/C:/xampp/htdocs/cosc/app/controllers/login.php</file>
         </group>
     </open-files>
 </project-private>
