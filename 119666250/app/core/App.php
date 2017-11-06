@@ -3,42 +3,24 @@
 class App {
 
     protected $controller = 'home';
-    protected $method = 'login';
+    protected $method = 'index';
     protected $params = [];
 
     public function __construct() {
-        if (isset($_SESSION['auth']) == 1) {
-            $this->method = 'index';
-        }
-
         // This will return a broken up URL
         // it will be /controller/method
         $url = $this->parseUrl();
 
+        print_r($url);
         /* if controller exists in the URL, then go to it
          * if not, then go to this->controller which is defaulted to home 
          */
         if (file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
-
-            $_SESSION['controller'] = $this->controller;
-
-            /* This is if we have a special URL in the index.
-             * For example, our apply page is public and in the index method
-             * We do not want the method to be login in this case, but instead index
-             * 
-             */
-            if (in_array($this->controller, $this->special_url)) {
-                $this->method = 'index';
-            }
             unset($url[0]);
-        } else {
-            header('Location: /home');
-            die;
-        }
+        } 
 
         require_once '../app/controllers/' . $this->controller . '.php';
-
         $this->controller = new $this->controller;
 
         // check to see if method is passed
@@ -46,7 +28,6 @@ class App {
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
-                $_SESSION['method'] = $this->method;
                 unset($url[1]);
             }
         }
@@ -59,7 +40,6 @@ class App {
     }
 
     public function parseUrl() {
-
         if (isset($_GET['url'])) {
             //trims the trailing forward slash (rtrim), sanitizes URL, explode it by forward slash to get elements
             return $url = explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));

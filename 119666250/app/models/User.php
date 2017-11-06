@@ -105,14 +105,14 @@ class User {
             $hashPass = password_hash($password, PASSWORD_DEFAULT);
             $db = db_connect();
             $statement = $db->prepare("INSERT INTO users (Username, Password, Email)"
-                    . "VALUES (:username, :password, :email ); ");
+                    . "VALUES (:username, :password, :email); ");
             $statement->bindValue(':username', $username);
             $statement->bindValue(':password', $hashPass);
             $statement->bindValue(':email', $email);
             $statement->execute();
             $_SESSION['auth'] = true;
         } else {
-            header('Location: /login/register');
+            header('Location: ' . LOGIN_REGISTER);
         }
     }
 

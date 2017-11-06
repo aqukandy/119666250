@@ -1,42 +1,47 @@
 <?php
+
 class remind extends Controller {
-    
-    public function index($id = '') {		
-        $user = $this->model('Reminders');
-		$list = $user->get_reminders();
-		
+
+    public function index($id = '') {
+        $reminder = $this->model('Reminders');
+        $list = $reminder->get_reminders();
+
         if ($id) {
             $item = $user->get_reminder($id);
-		print_r ($item);
-            $this->view('home/update', ['item' => $item] );
-			
-	}
-		
-            $this->view('home/index', ['list' => $list]);
-    }
-	
-    public function update($id) {
-        $user = $this->model('Reminders');
-        $item = $user->get_reminder($id);
-	$this->view('home/update', ['item' => $item] );
-			
-    }
-	
-    public function remove($id = '') {
-	$user = $this->model('Reminders');
-	$user->removeItem($id);
-	header('Location:/remind');
-    }
-	
-    public function create() {
-        $user = $this->model('User');
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $subjects = $_POST['username'];
-            $description = $_POST['password'];
-            $user->addToTable( $_SESSION['username'] , $subjects, $description);
-	}
+            $this->view('home/update', ['item' => $item]);
+        }
 
-        $this->view('/home/remider');
-        
+        $this->view('home/index', ['list' => $list]);
+    }
+
+    public function update($id='') {
+        $reminder = $this->model('Reminders');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $reminder->id = $_POST['reminderId'];
+            $reminder->subject = $_POST['subject'];
+            $reminder->description = $_POST['description'];
+            $reminder->updateItem();
+            $this->view("home/reminder", $reminder);
+        }else{
+            //show edit
+            $reminder = $reminder->get_reminder($id);
+            $this->view('home/update', $reminder);
+        }
+    }
+
+    public function remove($id = '') {
+        $reminder = $this->model('Reminders');
+        $reminder->removeItem($id);
+        header('Location: ' . HOME);
+    }
+
+    public function create() {
+        $reminders = $this->model('Reminders');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $subjects = $_POST['subject'];
+            $description = $_POST['description'];
+            $reminders->addToTable($_SESSION['username'], $subjects, $description);
+        }
+        $this->view('home/reminder', $reminders);
     }
 }

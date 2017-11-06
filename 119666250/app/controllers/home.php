@@ -1,12 +1,15 @@
 <?php
 
 class Home extends Controller {
-
-    public function index($name = '') {		
-        $user = $this->model('User');
-        $this->view('home/index', ['message' => $message]);
+    public function index($name = '') {
+        if(isset($_SESSION['username'])){
+            $reminder = $this->model('Reminders');
+            $this->view('home/reminder', $reminder);
+        }else{
+            $this->login();
+        }
     }
-
+    
     public function login($name = '') {
         $this->view('home/login');
     }

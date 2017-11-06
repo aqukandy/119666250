@@ -37,7 +37,7 @@ button[type=submit] {
 </html>
 <body> 
 <p class="lead"> <?= date("F jS, Y"); ?></p>
-    <form method="post" action="/login/register">
+    <form method="post" action="<?=LOGIN_REGISTER?>">
         Email:<br/>
         <input type="text" name="Email"><br/>
         Username:<br/>
@@ -50,5 +50,5 @@ button[type=submit] {
     </form>
 </body>
 </html>
-        <a href="/login/index"> Sign up here </a>
+        <a href="<?=LOGIN_INDEX?>"> Sign up here </a>
     <?php require_once '../app/views/templates/footer.php' ?>

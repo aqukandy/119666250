@@ -21,6 +21,5 @@
     }
 			
 session_destroy();
-header ('location:/');
-
+header ('Location: ' . HOME);
 ?> 

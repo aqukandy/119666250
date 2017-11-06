@@ -22,10 +22,10 @@ class Login extends Controller {
             $_SESSION['auth'] = true;
         }
         
-        header('Location: /home');
+        header('Location: ' . HOME);
     }
 	
-    public function register () {	
+    public function register () {
         $user = $this->model('User');
 	
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,7 +33,7 @@ class Login extends Controller {
             $username = $_POST['Username'];
             $password = $_POST['Password'];
 						
-            $user->register($email, $username, $password);
+            $user->register($username, $password, $email);
         }
 		
         $this->view('home/register');
