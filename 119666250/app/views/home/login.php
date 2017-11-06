@@ -31,7 +31,7 @@ input[type=submit] {
 </head>
 <body>
 
-<h1>Please LogIn!</h1>
+<h1>Please Login!</h1>
 
 </body>
 </html>
@@ -44,7 +44,7 @@ input[type=submit] {
     <input type="submit" value="LogIn">
 	<br/>
     <br/>
-    <a href="/Reports/attempts"> Report </a>
+    <a href="/Reports/attempt"> Report </a>
     <br/>
     <a href="/login/register"> Create account </a>
     </form>
