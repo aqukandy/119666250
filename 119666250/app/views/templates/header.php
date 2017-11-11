@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header('Location: ' . HOME);
     die;
 }
@@ -26,7 +26,7 @@ if(!isset($_SESSION['username'])){
             <div class="container-fluid">
                 <div class="float-right">
                     <a class="navbar-brand" 
-                       href="<?=HOME?>"><h2>COSC</h2></a>
+                       href="<?= HOME ?>"><h2>COSC</h2></a>
                 </div>
 
                 <div class="float-right">
@@ -34,11 +34,11 @@ if(!isset($_SESSION['username'])){
                         <button type="button" 
                                 class="btn btn-info dropdown-toggle"
                                 data-toggle="dropdown">
-                            <?php echo "Welcome " . $_SESSION['username']; ?>
+                                    <?php echo "Welcome " . $_SESSION['username']; ?>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" 
-                               href="<?=LOG_OUT?>">Logout</a>
+                               href="<?= LOG_OUT ?>">Logout</a>
                         </div>
                     </div>
                 </div>
