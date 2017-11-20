@@ -25,7 +25,7 @@
                 <div class="col-sm-9">
                     <textarea id="description"
                               name="description"
-                              class="form-control"
+                              class="form-control col"
                               rows="4"></textarea>
                 </div>
             </div>

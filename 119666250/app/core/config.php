@@ -24,6 +24,9 @@ define('REMINDER_CREATE', HOME . DS . 'remind/create');
 define('REMINDER_UPDATE', HOME . DS . 'remind/update');
 define('REMINDER_DELETE', HOME . DS . 'remind/remove');
 
+//REPORT
+define('REPORT', HOME . DS . 'reports/attempts');
+
 // ---------------------  NEW FENIX DATABASE TABLE -------------------------
 define('DB_HOST',         '127.0.0.1');
 define('DB_USER',         'root'); 

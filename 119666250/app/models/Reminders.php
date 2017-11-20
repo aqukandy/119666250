@@ -1,9 +1,12 @@
 <?php
 
 class Reminders {
+
     public $id;
     public $subject;
     public $description;
+    public $createdDate;
+    public $username;
 
     public function __construct() {
         
@@ -34,8 +37,8 @@ class Reminders {
         $statement->bindValue(':id', $id);
         $statement->execute();
     }
-    
-    public function updateItem(){
+
+    public function updateItem() {
         $db = db_connect();
         $statement = $db->prepare("UPDATE reminders "
                 . "SET  `subject` = :subject, "
@@ -140,6 +143,32 @@ class Reminders {
         $statement->execute();
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
 
+        return $rows;
+    }
+
+    public function getReport($mostReminder = null, $from = null, $to = null, $totalLogin = null) {
+        $db = db_connect();
+        $query = "SELECT * FROM reminders r inner join log l on r.Username = l.Username where deleted = 0";
+
+        if ($from != null) {
+            $query .= " and createdDate >= '" . $from . "'";
+        }
+
+        if ($to != null) {
+            $query .= " and createdDate <= '" . $to . "'";
+        }
+
+        if ($mostReminder != null) {
+            $query .= " and Attempt = (select max(Attempt) from log)";
+        }
+        
+        if($totalLogin != null){
+            $query .= " and Attempt = " . $totalLogin;
+        }
+
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
 

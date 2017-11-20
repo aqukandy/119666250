@@ -25,8 +25,17 @@ if (!isset($_SESSION['username'])) {
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
                 <div class="float-right">
-                    <a class="navbar-brand" 
-                       href="<?= HOME ?>"><h2>COSC</h2></a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="navbar-brand" 
+                               href="<?= HOME ?>"><h2>COSC</h2></a>
+                        </li>
+                        <?php if($_SESSION['username'] == 'admin') { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=REPORT?>">Report</a>
+                        </li>
+                        <?php } ?>
+                    </ul>
                 </div>
 
                 <div class="float-right">
