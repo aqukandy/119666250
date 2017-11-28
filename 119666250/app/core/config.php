@@ -18,6 +18,8 @@ define('HOME'           , '/119666250/public');
 define('LOGIN_REGISTER' , HOME . DS . 'login/register');
 define('LOGIN_INDEX'    , HOME . DS . 'login/index');
 define('LOG_OUT'        , HOME . DS . 'logout');
+define('PROFILE'        , HOME . DS . 'userController/profile');
+define('UPDATE_PROFILE'        , HOME . DS . 'userController/updateprofile');
 
 //REMINDER
 define('REMINDER_CREATE', HOME . DS . 'remind/create');

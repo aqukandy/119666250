@@ -39,7 +39,7 @@
     <p class="lead"> <?= date("F jS, Y"); ?></p>
     <form method="post" action="<?= LOGIN_REGISTER ?>">
         Email:<br/>
-        <input type="text" name="Email"><br/>
+        <input type="email" name="Email"><br/>
         Username:<br/>
         <input type="text" name="Username"><br/>
         Password<br/>

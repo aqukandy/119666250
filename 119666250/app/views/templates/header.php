@@ -46,6 +46,8 @@ if (!isset($_SESSION['username'])) {
                                     <?php echo "Welcome " . $_SESSION['username']; ?>
                         </button>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item"
+                               href="<?= PROFILE ?>">Profile</a>
                             <a class="dropdown-item" 
                                href="<?= LOG_OUT ?>">Logout</a>
                         </div>

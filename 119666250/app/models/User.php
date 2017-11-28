@@ -10,6 +10,10 @@ class User {
     public $time;
     public $subjects;
     public $description;
+    public $firstname;
+    public $lastname;
+    public $dob;
+    public $phone;
 
     public function __construct() {
         
@@ -100,20 +104,74 @@ class User {
     }
 
     public function register($username, $password, $email) {
-
         if (strlen($password) >= 3) {
             $hashPass = password_hash($password, PASSWORD_DEFAULT);
             $db = db_connect();
-            $statement = $db->prepare("INSERT INTO users (Username, Password, Email)"
-                    . "VALUES (:username, :password, :email); ");
+            $statement = $db->prepare("INSERT INTO users (Username, Password, Email) "
+                    . " VALUES(:username, :password, :email);");
             $statement->bindValue(':username', $username);
             $statement->bindValue(':password', $hashPass);
             $statement->bindValue(':email', $email);
             $statement->execute();
             $_SESSION['auth'] = true;
+
+            $this->addProfile($username);
         } else {
             header('Location: ' . LOGIN_REGISTER);
         }
     }
 
+    public function addProfile($username) {
+        //create first profile
+        $db = db_connect();
+        $statement = $db->prepare("INSERT INTO personalDetails(firstname, lastname, dob, phone, Username)"
+                . " values(:firstname, :lastname, :dob, :phone, :username);");
+        $statement->bindValue(':firstname', '');
+        $statement->bindValue(':lastname', '');
+        $statement->bindValue(':dob', null);
+        $statement->bindValue(':phone', '');
+        $statement->bindValue(':username', $username);
+        $statement->execute();
+    }
+    
+    public function updateProfile() {
+        $db = db_connect();
+        $statement = $db->prepare("update users u, personalDetails p "
+                . "set password = :password, "
+                . "     dob = :dob,"
+                . "     phone = :phone, "
+                . "     firstname = :firstname, "
+                . "     lastname = :lastname, "
+                . "     email = :email "
+                . "where u.username = p.username"
+                . " and p.username = :username;");
+        $hashPass = password_hash($this->password, PASSWORD_DEFAULT);
+        $statement->bindValue('password', $hashPass);
+        $statement->bindValue('dob', $this->dob);
+        $statement->bindValue('phone', $this->phone);
+        $statement->bindValue('firstname', $this->firstname);
+        $statement->bindValue('lastname', $this->lastname);
+        $statement->bindValue('email', $this->email);
+        $statement->bindValue('username', $this->username);
+        $statement->execute();
+    }
+
+    public function getUser() {
+        $db = db_connect();
+        $statement = $db->prepare("select * from users u, personalDetails p "
+                . "where p.username = :username and u.username = p.username");
+        $statement->bindValue("username", $this->username);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if($rows){
+            $this->email = $rows[0]['Email'];
+            $this->firstname = $rows[0]['firstname'];
+            $this->lastname = $rows[0]['lastname'];
+            $this->dob = $rows[0]['dob'];
+            $this->phone = $rows[0]['phone'];
+            $this->password = $rows[0]['Password'];
+        }
+        return $this;
+    }
 }
