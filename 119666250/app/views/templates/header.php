@@ -34,6 +34,9 @@ if (!isset($_SESSION['username'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="<?=REPORT?>">Report</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=USER_REPORT?>">Report User</a>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>

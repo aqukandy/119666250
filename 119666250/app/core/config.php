@@ -28,6 +28,9 @@ define('REMINDER_DELETE', HOME . DS . 'remind/remove');
 
 //REPORT
 define('REPORT', HOME . DS . 'reports/attempts');
+define('USER_REPORT', HOME . DS . 'userController/report');
+
+define('EXPORT', HOME . DS . 'api/export');
 
 // ---------------------  NEW FENIX DATABASE TABLE -------------------------
 define('DB_HOST',         '127.0.0.1');

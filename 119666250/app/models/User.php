@@ -174,4 +174,17 @@ class User {
         }
         return $this;
     }
+    
+    public function report(){
+        $db = db_connect();
+        $statement = $db->prepare(""
+                . " select *
+                    from users u
+                        join (select Username, count(*) as count from reminders group by Username) as r on u.Username = r.Username 
+                        join personaldetails p on u.Username = p.Username 
+                        join log l on u.Username = l.Username;");
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 }

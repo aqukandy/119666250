@@ -39,4 +39,8 @@ class UserController extends Controller {
         }
     }
 
+    public function report(){
+        $user = $this->model('User');
+        $this->view('reports/users', $user);
+    }
 }
